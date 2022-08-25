@@ -1,8 +1,11 @@
 var http = require('http')
 var fs = require('fs')
+var url = require('url')
 
 const server = http.createServer((req, res)=>{
-  const path = "./public" + req.url;
+
+  const urlPath = req.url.split("?")[0];
+  const path = "./public" + urlPath
 
   if(fs.existsSync(path)) {
     const ext = path.substring(path.lastIndexOf('.'));
@@ -17,10 +20,10 @@ const server = http.createServer((req, res)=>{
       return res.end();
     });
   } else {
-    console.log("Requested For: "+req.url)
-    console.log("Available Files/Folder:")
-    fs.readdirSync("./public").forEach(file => {
-      console.log(file);
-    })
-  }
+    console.log("File Not Found.")
+    }
+    console.log("Method: "+req.method)
+    console.log("URL: "+ urlPath)
+    const queryParams = url.parse(req.url, true).query;
+    console.log(queryParams);
 }).listen(8000)
