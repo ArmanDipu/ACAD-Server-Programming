@@ -1,22 +1,23 @@
 const fs = require("fs")
 
 const getCV = (req, res) => {
-  educations = fs.readFileSync("data/education", { encoding: "utf-8" })
-  educations = JSON.parse(String(educations))
 
-  edus = [];
+    info = fs.readFileSync("data/info",{ encoding: "utf-8" })
+    info = JSON.parse(String(info))
 
-  for (let key in educations) {
-    edus.push(educations[key])
-  }
+    educations = fs.readFileSync("data/education", { encoding: "utf-8" })
+    educations = JSON.parse(String(educations))
 
-  res.render("cv",{
-    name: "Arman Hossain Dipu",
-    profession : "Software Engineer",
-    address : "Dhaka, Bangladesh",
-    email : "armanshuvo2000@gmail.com",
-    phone: "01611595616",
-    educations:edus
+    edus = [];
+
+    for (let key in educations) {
+        edus.push(educations[key])
+    }
+
+    res.render("cv",{
+        name: "Arman Hossain Dipu",
+        info: info,
+        educations:edus
 })
 
 }
