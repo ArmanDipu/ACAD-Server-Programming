@@ -10,7 +10,13 @@ router.get("/about",(req,res)=>{
 })
 
 router.get("/cv",(req,res)=>{
-    res.render("cv",{name: "Arman Hossain Dipu"})
+    res.render("cv",{
+        name: "Arman Hossain Dipu",
+        profession : "Software Engineer",
+        address : "Dhaka, Bangladesh",
+        email : "armanshuvo2000@gmail.com",
+        phone: "01611595616"
+    })
 })
 
 module.exports = router
