@@ -2,7 +2,8 @@ var http = require('http')
 var fs = require('fs')
 
 const server = http.createServer((req, res)=>{
-  const path = "./public" + req.url;
+  const path = __dirname + "/public" + req.url
+
 
   if(fs.existsSync(path)) {
     const ext = path.substring(path.lastIndexOf('.'));
