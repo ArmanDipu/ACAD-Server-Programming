@@ -1,7 +1,7 @@
 require("dotenv").config()
 const express = require("express")
 const router = require("./routes")
-const mongoose = require("moongoose")
+const mongoose = require("mongoose")
 
 database_url = process.env.DATABASE_URL
 
