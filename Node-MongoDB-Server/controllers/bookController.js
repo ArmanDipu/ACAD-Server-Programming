@@ -1,7 +1,21 @@
 const bookModel = require("../models/book")
+const books = require("../models/book")
 
-const getBookList = (req,res) =>{
-    res.render("bookList")
+const getBookList = async (req,res) =>{
+    let data= []
+    let books = []
+    try{
+        data = await bookModel.find()
+        
+        data.forEach((bookSchema)=>{
+            books.push({name: bookSchema.name, author: bookSchema.author, genre: bookSchema.genre})
+        })
+    }catch(err){
+        console.log(err)
+    }finally{
+        console.log(books[0])
+        res.render("bookList",{ books: books, txt: "Hello!"})
+    }
 }
 
 const addBook = (req, res) =>{

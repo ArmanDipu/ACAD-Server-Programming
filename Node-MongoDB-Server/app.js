@@ -9,7 +9,7 @@ database_url = process.env.DATABASE_URL
 mongoose.connect(database_url).then(() => {
     console.log(`Database Connected.`)
 }).catch((err) => {
-    console.log(error)
+    console.log(err)
 })
 
 const port = 3000
