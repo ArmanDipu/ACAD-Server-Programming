@@ -8,12 +8,11 @@ const getBookList = async (req,res) =>{
         data = await bookModel.find()
         
         data.forEach((bookSchema)=>{
-            books.push({name: bookSchema.name, author: bookSchema.author, genre: bookSchema.genre})
+            books.push({id: bookSchema.id, name: bookSchema.name, author: bookSchema.author, genre: bookSchema.genre})
         })
     }catch(err){
         console.log(err)
     }finally{
-        console.log(books[0])
         res.render("bookList",{ books: books, txt: "Hello!"})
     }
 }
@@ -36,4 +35,13 @@ const postBook = (req, res) =>{
     
 }
 
-module.exports= {getBookList, addBook, postBook}
+const deleteBook = (req, res) =>{
+    const deleteId = req.params.id
+    bookModel.findOneAndDelete({_id : deleteId}).then(()=>{
+        console.log("Book Deleted! id:" + deleteId)
+    }).catch((error)=>{console.log(error)}).finally(()=>{
+        res.redirect("/book-list")
+    })
+}
+
+module.exports= {getBookList, addBook, postBook, deleteBook}
