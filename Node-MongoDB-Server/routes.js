@@ -9,5 +9,6 @@ router.get("/books", bookController.addBook)
 router.get("/book-list", bookController.getBookList)
 router.post('/books',bookController.postBook)
 router.get('/book-list/delete/:id', bookController.deleteBook);
+router.get('/book-list/update/:id',bookController.showUpdateBook)
 
 module.exports = router

@@ -44,4 +44,16 @@ const deleteBook = (req, res) =>{
     })
 }
 
-module.exports= {getBookList, addBook, postBook, deleteBook}
+const showUpdateBook = (req,res) => {
+    const updateId = req.params.id
+    const book = bookModel.findById(updateId, function (err, book) {
+        if (err){
+            console.log(err);
+        }
+        else{
+            res.render("updateBook", {book: book})
+        }
+    })
+}
+
+module.exports= {getBookList, addBook, postBook, deleteBook, showUpdateBook}
