@@ -46,7 +46,7 @@ const deleteBook = (req, res) =>{
 
 const showUpdateBook = (req,res) => {
     const updateId = req.params.id
-    const book = bookModel.findById(updateId, function (err, book) {
+    bookModel.findById(updateId, function (err, book) {
         if (err){
             console.log(err);
         }
@@ -56,4 +56,20 @@ const showUpdateBook = (req,res) => {
     })
 }
 
-module.exports= {getBookList, addBook, postBook, deleteBook, showUpdateBook}
+const updateBook = (req,res) => {
+    updateId = req.params.id
+    bookModel.findByIdAndUpdate(updateId,{
+        name: req.body.name,
+        author: req.body.author,
+        genre: req.body.genre
+    },(err)=>{
+        if (err){
+            console.log(err)
+        }
+        else{
+            res.redirect("/book-list")
+        }
+    })
+}
+
+module.exports= {getBookList, addBook, postBook, deleteBook, showUpdateBook, updateBook}
