@@ -1,8 +1,21 @@
 const squackUserModel = require("../models/SquackUser")
 const messegeModel = require("../models/messeges.js")
 
-const getIndexPage = (req,res)=>{
-    res.render("index")
+const getIndexPage = async (req,res)=>{
+    let data = []
+    let msgs = []
+
+    try{
+        data = await messegeModel.find()
+
+        data.forEach((messegeSchema)=>{
+            msgs.push({from: messegeSchema.from, msg: messegeSchema.msg})
+        })
+    }catch(err){
+        console.log(err)
+    }finally{
+        res.render("index",{ msgs: msgs})
+    }
 }
 
 const postMessege = (req,res) =>{

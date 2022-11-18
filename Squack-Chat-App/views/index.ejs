@@ -50,7 +50,9 @@
                         <a href="/" class="btn btn-success">Refresh</a>
                         <div style="padding : 5%">
                             <ul class="list-group">
-                                <li class="list-group-item">An item</li>
+<% for (let i=0; i<msgs.length; i++){ %>
+                                <li class="list-group-item"><%=msgs[i].from%> : <%=msgs[i].msg%></li>
+<%}%>
                                 <li class="list-group-item">
                                     <label for="inputPassword6" class="col-form-label">Write Messege</label>
                                     <input type="Messege" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline" name="msg"><br>
