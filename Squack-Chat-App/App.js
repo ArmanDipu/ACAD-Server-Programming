@@ -15,6 +15,8 @@ mongoose.connect(database_url).then(()=>{
 const port = 3000
 const app = express()
 
+app.use(bodyParser.urlencoded({extended:false}))
+app.use(bodyParser.json())
 app.use(router)
 app.set("view engine", "ejs")
 app.set("views", __dirname+"/views")

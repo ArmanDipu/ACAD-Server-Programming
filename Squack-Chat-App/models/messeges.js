@@ -14,3 +14,5 @@ const messegeSchema = mongoose.Schema({
         type : String
     }
 })
+
+module.exports = mongoose.model("messegeSchema", messegeSchema)
