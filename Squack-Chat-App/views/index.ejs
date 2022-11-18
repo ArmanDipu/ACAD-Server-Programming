@@ -14,7 +14,7 @@
     <nav class="navbar navbar-light" style="background-color: lightblue;">
         <div class="container-fluid">
             <a class="navbar-brand">Squack</a>
-            <button class="btn btn-outline-danger" type="submit">
+            <button class="btn btn-danger" type="submit">
                 <%= currentUser? currentUser : "Not Selected" %>
             </button>
         </div>
@@ -57,8 +57,8 @@
             <div class="col">
                 <div class="card">
                     <div class="card-body" style="padding: 10px;">
-                        <button type="button" class="btn btn-primary">Messege </button>
-                        <a href="/refresh" class="btn btn-success">Refresh</a>
+                        <a href="" class="btn btn-success">Messege</a>
+                        <a href="/refresh" class="btn btn-outline-danger">Refresh</a>
                         <div style="padding : 5%">
                             <ul class="list-group">
                                 <% for (let i=0; i<msgs.length; i++){ %>

@@ -30,7 +30,7 @@ const getIndexPage = async (req,res)=>{
     }catch(err){
         console.log(err)
     }finally{
-        res.render("index",{msgs:filteredMsg , users:users, currentUser, everyone:"@everyone ", all:"all"})
+        res.render("index",{msgs:filteredMsg , users:users, currentUser})
     }
 }
 
@@ -51,9 +51,10 @@ const postMessege = (req,res) =>{
 
 const refresh = (req,res) =>{
     console.log("Refreshing...")
-    messegeModel.remove( { msg : { $nin: "Happy Messaging" }}).then(()=>{
+    messegeModel.remove( { msg : { $nin: "👾😇Happy Messaging😇👾" }}).then(()=>{
         res.redirect("/")
     })
 }
+
 
 module.exports = {getIndexPage, postMessege, refresh}
