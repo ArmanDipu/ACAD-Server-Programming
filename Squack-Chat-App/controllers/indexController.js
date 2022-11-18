@@ -12,7 +12,7 @@ const getIndexPage = async (req,res)=>{
         data = await messegeModel.find()
 
         data.forEach((messegeSchema)=>{
-            msgs.push({from: messegeSchema.from, msg: messegeSchema.msg})
+            msgs.push({from: messegeSchema.from, to: messegeSchema.to, msg: messegeSchema.msg})
         })
 
         data = await squackUserModel.find()
@@ -24,7 +24,7 @@ const getIndexPage = async (req,res)=>{
 
         data = await messegeModel.find({$or:[{from:currentUser},{to:currentUser},{to:"all"}]})
         data.forEach((messegeSchema)=>{
-            filteredMsg.push({from: messegeSchema.from, msg: messegeSchema.msg})
+            filteredMsg.push({from: messegeSchema.from,to: messegeSchema.to, msg: messegeSchema.msg})
         })
 
     }catch(err){
@@ -51,7 +51,7 @@ const postMessege = (req,res) =>{
 
 const refresh = (req,res) =>{
     console.log("Refreshing...")
-    messegeModel.remove( { msg : { $nin: "Happy Messeging" }}).then(()=>{
+    messegeModel.remove( { msg : { $nin: "Happy Messaging" }}).then(()=>{
         res.redirect("/")
     })
 }
