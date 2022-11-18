@@ -1,5 +1,16 @@
+require("dotenv").config()
+
 const express = require("express")
 const router = require("./routes")
+const mongoose = require("mongoose")
+const bodyParser = require("body-parser")
+
+database_url = process.env.DATABASE_URL
+mongoose.connect(database_url).then(()=>{
+    console.log("Database Connected.")
+}).catch((err)=>{
+    console.log(err)
+})
 
 const port = 3000
 const app = express()
