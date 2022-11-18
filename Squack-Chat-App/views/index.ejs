@@ -35,9 +35,10 @@
                             <label for="reciever" class="col-form-label">Select Reciever</label>
                         </div>
                         <select class="form-select form-select-m" aria-label=".form-select-sm example" id="receiver" name="to">
-                            <% for (let i=0; i<users.length; i++){ %>
+                            <% for (let i=0; i<users.length; i++){ 
+                                if(currentUser!=users[i].name){%>
                                 <option value="<%= users[i].name%>"><%= users[i].name%></option>
-                            <%}%>
+                            <%}}%>
                             <option value="all">@everyone</option>
                           </select>
                     </div>
@@ -47,11 +48,12 @@
                 <div class="card">
                     <div class="card-body" style="padding: 10px;">
                         <button type="button" class="btn btn-primary">Messege </button>
-                        <a href="/" class="btn btn-success">Refresh</a>
+                        <a href="/refresh" class="btn btn-success">Refresh</a>
                         <div style="padding : 5%">
                             <ul class="list-group">
 <% for (let i=0; i<msgs.length; i++){ %>
-                                <li class="list-group-item"><%=msgs[i].from%> : <%=msgs[i].msg%></li>
+                                <li class="list-group-item"><%= msgs[i].from == currentUser ? "Me" : msgs[i].from %>
+                                    : <%= msgs[i].msg%></li>
 <%}%>
                                 <li class="list-group-item">
                                     <label for="inputPassword6" class="col-form-label">Write Messege</label>

@@ -6,6 +6,7 @@ const getIndexPage = async (req,res)=>{
     let msgs = []
     let users = []
     var currentUser
+    let filteredMsg = []
 
     try{
         data = await messegeModel.find()
@@ -21,10 +22,15 @@ const getIndexPage = async (req,res)=>{
 
         currentUser = msgs[msgs.length-1].from
 
+        data = await messegeModel.find({$or:[{from:currentUser},{to:currentUser},{to:"all"}]})
+        data.forEach((messegeSchema)=>{
+            filteredMsg.push({from: messegeSchema.from, msg: messegeSchema.msg})
+        })
+
     }catch(err){
         console.log(err)
     }finally{
-        res.render("index",{msgs:msgs , users:users, currentUser})
+        res.render("index",{msgs:filteredMsg , users:users, currentUser, everyone:"@everyone ", all:"all"})
     }
 }
 
@@ -43,4 +49,11 @@ const postMessege = (req,res) =>{
     this.currentUser =  req.body.from
 }
 
-module.exports = {getIndexPage, postMessege}
+const refresh = (req,res) =>{
+    console.log("Refreshing...")
+    messegeModel.remove( { msg : { $nin: "Happy Messeging" }}).then(()=>{
+        res.redirect("/")
+    })
+}
+
+module.exports = {getIndexPage, postMessege, refresh}
