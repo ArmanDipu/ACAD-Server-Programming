@@ -14,7 +14,7 @@
     <nav class="navbar navbar-light" style="background-color: lightblue;">
         <div class="container-fluid">
             <a class="navbar-brand">Squack</a>
-            <button class="btn btn-outline-danger" type="submit">"UserName"</button>
+            <button class="btn btn-outline-danger" type="submit"><%= currentUser? currentUser : "Not Selected" %></button>
         </div>
     </nav><br>
 
@@ -27,18 +27,18 @@
                             <label for="sender" class="col-form-label">Select Sender</label>
                         </div>
                         <select class="form-select form-select-m" aria-label=".form-select-sm example" id="sender" name="from">
-                            <option selected>Sender</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+<% for (let i=0; i<users.length; i++){ %>
+                            <option value="<%= users[i].name%>"><%= users[i].name%></option>
+<%}%>
                         </select><br>
                         <div class="col-auto">
                             <label for="reciever" class="col-form-label">Select Reciever</label>
                         </div>
                         <select class="form-select form-select-m" aria-label=".form-select-sm example" id="receiver" name="to">
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <% for (let i=0; i<users.length; i++){ %>
+                                <option value="<%= users[i].name%>"><%= users[i].name%></option>
+                            <%}%>
+                            <option value="all">@everyone</option>
                           </select>
                     </div>
                 </div>
