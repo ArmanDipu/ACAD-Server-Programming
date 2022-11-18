@@ -5,6 +5,8 @@ const port = 3000
 const app = express()
 
 app.use(router)
+app.set("view engine", "ejs")
+app.set("views", __dirname+"/views")
 
 app.listen(port,()=>{
     console.log(`Squack is running at http://localhost:${port}`)

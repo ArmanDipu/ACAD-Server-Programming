@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Squack</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-light" style="background-color: lightblue;">
+        <div class="container-fluid">
+            <a class="navbar-brand">Squack</a>
+            <button class="btn btn-outline-danger" type="submit">"UserName"</button>
+        </div>
+    </nav><br>
+
+    <div class="container">
+        <form class="row justify-content-md-center" >
+            <div class="col col-lg-2">
+                <div class="card">
+                    <div class="card-body" >
+                        <div class="col-auto">
+                            <label for="sender" class="col-form-label">Select Sender</label>
+                        </div>
+                        <select class="form-select form-select-m" aria-label=".form-select-sm example" id="sender">
+                            <option selected>Sender</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select><br>
+                        <div class="col-auto">
+                            <label for="reciever" class="col-form-label">Select Reciever</label>
+                        </div>
+                        <select class="form-select form-select-m" aria-label=".form-select-sm example" id="receiver">
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                          </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <div class="card-body" style="padding: 10px;">
+                        <button type="button" class="btn btn-primary">Messege </button>
+                        <button type="button" class="btn btn-success">Refresh </button>
+                        <div style="padding : 5%">
+                            <ul class="list-group">
+                                <li class="list-group-item">An item</li>
+                                <li class="list-group-item">
+                                    <label for="inputPassword6" class="col-form-label">Write Messege</label>
+                                    <input type="Messege" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline"><br>
+                                    <button type="submit" class="btn btn-primary">send</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
